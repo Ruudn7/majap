@@ -1,0 +1,10 @@
+@import 'src/app/styles/colors.scss';
+
+.login-item {
+    color: $white;
+    cursor: pointer;
+
+    &:hover {
+        color: $green-dirty;
+    }
+}

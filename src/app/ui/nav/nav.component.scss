@@ -1,0 +1,15 @@
+@import 'src/app/styles/colors.scss';
+
+.menu {
+    background-color: $black;
+
+    &-item {
+        color: $white;
+        padding-right: 24px;
+        cursor: pointer;
+
+        &:hover {
+            color: $green-dirty;
+        }
+    }
+}
