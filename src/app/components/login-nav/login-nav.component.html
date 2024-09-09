@@ -1,1 +1,10 @@
-<div class="login-item">Login</div>
+
+@if(!user().email) {
+    <a class="login-item" routerLink="/login">
+        Login
+    </a>
+} @else {
+    <div class="login-item" (click)="login()">
+        {{user().email }}
+    </div> 
+}

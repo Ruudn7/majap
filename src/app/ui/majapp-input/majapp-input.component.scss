@@ -1,0 +1,8 @@
+input {
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+
+    &:active, &:focus {
+        box-shadow: none;
+    }
+}
