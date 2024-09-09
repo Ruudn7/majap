@@ -1,0 +1,29 @@
+
+@if(controlInstance.touched || controlInstance.dirty) {
+    @if(controlInstance.getError('required')) {
+        <div class="validation-feedback">
+            Field is required
+        </div>
+    }
+
+    @if(controlInstance.getError('minlength'); as error) {
+        <div class="validation-feedback">
+            Field has to have at least {{error.requiredLength}} letters
+        </div>
+    }
+
+    @if(controlInstance.getError('invalid-username')) {
+        <div class="validation-feedback">
+            This username is forbidden
+        </div>
+    }
+
+    @if(controlInstance.getError('email')) {
+        <div class="validation-feedback">
+            E-mail format is incorrect
+        </div>
+    }
+
+    <ng-content></ng-content>
+
+}

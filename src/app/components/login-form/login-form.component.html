@@ -1,24 +1,22 @@
 <div class="form-contanier mx-auto p-4 mt-5">
     <h4 class="mb-4">Login Form</h4>
 
-    {{loginFormValue | json }}
-
     <form [formGroup]="loginForm" (submit)="login()">
         <div class="form-group">
             <label for="">Username:</label>
             <app-majapp-input formControlName="username"></app-majapp-input>
+            <app-input-validator controlName="username"></app-input-validator>
         </div>
-        
+
         <div class="form-group">
             <label for="">Password:</label>
             <app-majapp-input formControlName="password"></app-majapp-input>
-        </div> 
+            <app-input-validator controlName="password">
+                <app-password-validator controlName="password"></app-password-validator>
+            </app-input-validator>
+        </div>
 
         <button class="btn btn-success mt-4" type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 
-   
-    
 </div>
-
-
