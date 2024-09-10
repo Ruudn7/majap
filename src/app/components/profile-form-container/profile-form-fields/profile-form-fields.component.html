@@ -1,0 +1,16 @@
+<form [formGroup]="userForm" (ngSubmit)="save()">
+    <app-form-section sectionHeader="Basic info">
+        <app-profile-form-basic [basicInfoForm]="userInfo"></app-profile-form-basic>
+    </app-form-section>
+
+    <app-form-section sectionHeader="Contact info">
+        <app-profile-form-basic [basicInfoForm]="userInfo"></app-profile-form-basic>
+    </app-form-section>
+
+    <button class="btn btn-success" [disabled]="userForm.invalid">Send</button>
+
+</form>
+
+<!-- <div class="mt-5">
+    {{userForm.value| json}}
+</div> -->

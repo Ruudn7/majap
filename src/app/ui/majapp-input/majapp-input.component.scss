@@ -1,5 +1,7 @@
+@import 'src/app/styles/colors.scss';
+
 input {
-    border: 1px solid #bebebe;
+    border: 1px solid $borderPrimary;
     border-radius: 4px;
 
     &:active, &:focus {

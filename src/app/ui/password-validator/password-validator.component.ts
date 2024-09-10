@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroupDirective } from '@angular/forms';
-import { IErrorOptionsConfig } from '@app/components/login-form/login-form.component';
+import { IErrorOptionsConfig } from '@app/components/login-form/login.interface';
 
 @Component({
   selector: 'app-password-validator',

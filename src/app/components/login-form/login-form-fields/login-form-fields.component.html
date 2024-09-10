@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm" (submit)="login()">
+    <div class="form-group">
+        <label for="">Username:</label>
+        <app-majapp-input formControlName="username"></app-majapp-input>
+        <app-input-validator controlName="username"></app-input-validator>
+    </div>
+
+    <div class="form-group">
+        <label for="">Password:</label>
+        <app-majapp-input formControlName="password"></app-majapp-input>
+        <app-input-validator controlName="password">
+            <app-password-validator controlName="password"></app-password-validator>
+        </app-input-validator>
+    </div>
+
+    <a routerLink="/profile" class="register-link d-block my-2">Create account</a>
+
+    <button class="btn btn-success" type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>

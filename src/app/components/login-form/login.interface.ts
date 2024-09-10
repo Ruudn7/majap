@@ -9,3 +9,11 @@ export interface LoginUserForm {
     username: FormControl<string>;
     password: FormControl<string>;
 }
+
+export interface IErrorOptionsConfig {
+    uppercase?: boolean;
+    lowercase?: boolean;
+    number?: boolean;
+    special?: boolean;
+  }
+  

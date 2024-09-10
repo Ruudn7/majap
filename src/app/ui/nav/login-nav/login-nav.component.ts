@@ -1,7 +1,7 @@
 import { Component, OnInit, Signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@app/auth/auth.service';
-import { User } from '@app/interface/user';
+import { IUserContactInfo } from '@app/interface/user';
 
 @Component({
   selector: 'app-login-nav',
@@ -16,7 +16,7 @@ export class LoginNavComponent implements OnInit {
    private authService: AuthService
   ) {}
 
-  user: Signal<User> = this.authService.user;
+  user: Signal<IUserContactInfo> = this.authService.user;
 
   ngOnInit(): void {
     console.log(this.user())

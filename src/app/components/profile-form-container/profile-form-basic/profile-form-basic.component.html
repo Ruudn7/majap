@@ -1,0 +1,29 @@
+<ng-container [formGroup]="basicInfoForm">
+
+    <div class="d-flex">
+        <div class="form-group me-2">
+            <label for="">Name:</label>
+            <app-majapp-input formControlName="name"></app-majapp-input>
+            <app-input-validator controlName="name"></app-input-validator>
+        </div>
+
+        <div class="form-group ms-2">
+            <label for="">Lastname:</label>
+            <app-majapp-input formControlName="lastname"></app-majapp-input>
+            <app-input-validator controlName="lastname"></app-input-validator>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="">Birthday:</label>
+        <input class="form-control" type="date" formControlName="birthday">
+        <app-input-validator controlName="birthday"></app-input-validator>
+    </div>
+
+    <div class="form-group">
+        <label for="">Gender:</label>
+        <app-majapp-input formControlName="gender"></app-majapp-input>
+        <app-input-validator controlName="gender"></app-input-validator>
+    </div>
+
+</ng-container>

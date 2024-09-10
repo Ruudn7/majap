@@ -1,0 +1,12 @@
+@import 'src/app/styles/colors.scss';
+
+.section {
+    border-top: 1px solid $borderPrimary;
+
+    &-header {
+        background-color: $borderPrimary;
+        font-size: 12px;
+        font-weight: 600;
+        padding-left: 8px;
+    }
+}
