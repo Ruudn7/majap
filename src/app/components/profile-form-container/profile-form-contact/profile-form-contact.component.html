@@ -1,0 +1,17 @@
+<ng-container [formGroup]="contactForm">
+
+    <div class="d-flex">
+        <div class="form-group me-2">
+            <label for="">Email*</label>
+            <app-majapp-input formControlName="email"></app-majapp-input>
+            <app-input-validator controlName="email"></app-input-validator>
+        </div>
+
+        <div class="form-group ms-2">
+            <label for="">Phone</label>
+            <app-majapp-input formControlName="phone"></app-majapp-input>
+            <app-input-validator controlName="phone"></app-input-validator>
+        </div>
+    </div>
+
+</ng-container>

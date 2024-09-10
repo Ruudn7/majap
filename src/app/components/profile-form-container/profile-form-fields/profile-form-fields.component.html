@@ -4,7 +4,15 @@
     </app-form-section>
 
     <app-form-section sectionHeader="Contact info">
-        <app-profile-form-basic [basicInfoForm]="userInfo"></app-profile-form-basic>
+        <app-profile-form-contact [contactForm]="userContact"></app-profile-form-contact>
+    </app-form-section>
+
+    <app-form-section sectionHeader="Address info">
+        <app-profile-form-address [addressForm]="userAddress"></app-profile-form-address>
+    </app-form-section>
+
+    <app-form-section sectionHeader="Additional info">
+        <app-profile-form-additionals [additionalsForm]="userAdditional"></app-profile-form-additionals>
     </app-form-section>
 
     <button class="btn btn-success" [disabled]="userForm.invalid">Send</button>

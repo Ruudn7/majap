@@ -1,0 +1,21 @@
+<ng-container [formGroup]="additionalsForm">
+
+    <div class="form-group">
+        <label for="">Description</label>
+        <textarea maxlength="500" class="form-control" formControlName="description"></textarea>
+        <app-input-validator controlName="description"></app-input-validator>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Hobbys</label>
+        <app-majapp-input formControlName="hobbys"></app-majapp-input>
+        <app-input-validator controlName="hobbys"></app-input-validator>
+    </div>
+
+    <div class="form-group">
+        <label for="">Shotr Infos</label>
+        <app-majapp-input formControlName="shotrInfos"></app-majapp-input>
+        <app-input-validator controlName="shotrInfos"></app-input-validator>
+    </div>
+
+</ng-container>

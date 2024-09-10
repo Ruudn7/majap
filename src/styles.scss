@@ -14,3 +14,7 @@ a {
 label {
     font-size: 12px;
 }
+
+form .ng-invalid.ng-touched input, form .ng-invalid.ng-dirty input {
+    border: 2px solid red !important;
+}

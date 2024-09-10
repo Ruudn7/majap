@@ -1,0 +1,29 @@
+<ng-container [formGroup]="addressForm">
+
+    <div class="form-group">
+        <label for="">City*</label>
+        <app-majapp-input formControlName="city"></app-majapp-input>
+        <app-input-validator controlName="city"></app-input-validator>
+    </div>
+
+    <div class="d-flex">
+        <div class="form-group me-2">
+            <label for="">Country</label>
+            <app-majapp-input formControlName="country"></app-majapp-input>
+            <app-input-validator controlName="country"></app-input-validator>
+        </div>
+    
+        <div class="form-group ms-2">
+            <label for="">Postal Code</label>
+            <app-majapp-input formControlName="postalCode"></app-majapp-input>
+            <app-input-validator controlName="postalCode"></app-input-validator>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="">Street</label>
+        <app-majapp-input formControlName="street"></app-majapp-input>
+        <app-input-validator controlName="street"></app-input-validator>
+    </div>
+
+</ng-container>
