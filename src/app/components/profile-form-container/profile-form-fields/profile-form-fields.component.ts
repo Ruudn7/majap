@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser, IUserAdditionalForm, IUserAdditionalShorts, IUserAddressForm, IUserBasicForm, IUserContactForm, IUserForm } from '@app/interface/user';
-import { C_EMPTY_USER } from '../const';
-import { ProfileFormBasicComponent } from '../profile-form-basic/profile-form-basic.component';
 import { FormSectionComponent } from '@app/ui/form-section/form-section.component';
-import { ProfileFormContactComponent } from '../profile-form-contact/profile-form-contact.component';
-import { ProfileFormAddressComponent } from '../profile-form-address/profile-form-address.component';
+import { map, tap } from 'rxjs';
+import { C_EMPTY_USER } from '../const';
 import { ProfileFormAdditionalsComponent } from '../profile-form-additionals/profile-form-additionals.component';
+import { ProfileFormAddressComponent } from '../profile-form-address/profile-form-address.component';
+import { ProfileFormBasicComponent } from '../profile-form-basic/profile-form-basic.component';
+import { ProfileFormContactComponent } from '../profile-form-contact/profile-form-contact.component';
 
 @Component({
   selector: 'app-profile-form-fields',
@@ -19,16 +20,19 @@ import { ProfileFormAdditionalsComponent } from '../profile-form-additionals/pro
     ProfileFormAdditionalsComponent,
     ReactiveFormsModule,
     CommonModule,
-    FormSectionComponent,
+    FormSectionComponent
   ],
   templateUrl: './profile-form-fields.component.html',
   styleUrl: './profile-form-fields.component.scss'
 })
-export class ProfileFormFieldsComponent {
+export class ProfileFormFieldsComponent implements OnDestroy {
 
   constructor(
     private fb: NonNullableFormBuilder
   ) {}
+
+  isAddresVisible = new FormControl(false);
+  isAdditonalsVisible = new FormControl(false);
 
   user: IUser = C_EMPTY_USER;
 
@@ -55,10 +59,27 @@ export class ProfileFormFieldsComponent {
     return this.userForm.get('additionals') as FormGroup<IUserAdditionalForm>
   }
 
+  addressValidationSub = this.isAddresVisible.valueChanges.pipe(
+    map((v: boolean | null) => !!v),
+    tap((v: boolean) => this.changeAddressValidation(v))
+  ).subscribe();
+
+  additionalValidationSub = this.isAdditonalsVisible.valueChanges.pipe(
+    map((v: boolean | null) => !!v),
+    tap((v: boolean) => this.changeAdditionalsValidation(v))
+  ).subscribe()
+
   save(): void {
     this.user = this.userForm.getRawValue();
-    console.log(this.userForm.value, this.user)
-    console.log(this.userInfo)
+    console.log(this.user)
+  }
+
+  private changeAddressValidation(isVisible: boolean): void {
+    isVisible ? this.userForm.get('address')?.enable() : this.userForm.get('address')?.disable()
+  }
+
+  private changeAdditionalsValidation(isVisible: boolean): void {
+    isVisible ? this.userForm.get('additionals')?.enable() : this.userForm.get('additionals')?.disable()
   }
 
   private createBasicForm(): FormGroup<IUserBasicForm> {
@@ -99,7 +120,7 @@ export class ProfileFormFieldsComponent {
     return this.fb.group<IUserAddressForm>({
       city: new FormControl<string>('', {
         nonNullable: true,
-        validators: [],
+        validators: [Validators.required, Validators.minLength(3)],
       }),
       country: new FormControl<string>('', {
         nonNullable: true,
@@ -120,7 +141,7 @@ export class ProfileFormFieldsComponent {
     return this.fb.group<IUserAdditionalForm>({
       description: new FormControl<string>('', {
         nonNullable: true,
-        validators: [],
+        validators: [Validators.required, Validators.minLength(15)],
       }),
       hobbys: new FormControl<string[]>([], {
         nonNullable: true,
@@ -133,4 +154,8 @@ export class ProfileFormFieldsComponent {
     })
   }
 
+  ngOnDestroy(): void {
+    this.addressValidationSub.unsubscribe();
+    this.additionalValidationSub.unsubscribe();
+  }
 }

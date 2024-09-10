@@ -7,13 +7,33 @@
         <app-profile-form-contact [contactForm]="userContact"></app-profile-form-contact>
     </app-form-section>
 
-    <app-form-section sectionHeader="Address info">
-        <app-profile-form-address [addressForm]="userAddress"></app-profile-form-address>
-    </app-form-section>
+    <div class="mb-3">
+        <div class="form-check me-4">
+            <input class="form-check-input" type="checkbox" [formControl]="isAddresVisible" id="addresVisible">
+            <label class="form-check-label" for="addresVisible">
+                Address info
+            </label>
+        </div>
 
-    <app-form-section sectionHeader="Additional info">
-        <app-profile-form-additionals [additionalsForm]="userAdditional"></app-profile-form-additionals>
-    </app-form-section>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" [formControl]="isAdditonalsVisible" id="additionalVisible">
+            <label class="form-check-label" for="additionalVisible">
+                Additional info
+            </label>
+        </div>
+    </div>
+
+    @if(isAddresVisible.value) {
+        <app-form-section sectionHeader="Address info">
+            <app-profile-form-address [addressForm]="userAddress"></app-profile-form-address>
+        </app-form-section>
+    }
+
+    @if(isAdditonalsVisible.value) {
+        <app-form-section sectionHeader="Additional info">
+            <app-profile-form-additionals [additionalsForm]="userAdditional"></app-profile-form-additionals>
+        </app-form-section>
+    }
 
     <button class="btn btn-success" [disabled]="userForm.invalid">Send</button>
 
