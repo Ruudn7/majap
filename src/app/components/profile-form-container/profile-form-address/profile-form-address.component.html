@@ -26,4 +26,15 @@
         <app-input-validator controlName="street"></app-input-validator>
     </div>
 
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="mapVisible" (change)="changeMapVisibility()">
+        <label class="form-check-label" for="mapVisible">
+            Pick from map
+        </label>
+    </div>
+
+    @if(mapVisible) {
+        <app-google-map [addressForm]="addressForm"></app-google-map>
+    }
+
 </ng-container>

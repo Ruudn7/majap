@@ -1,0 +1,12 @@
+<div class="form-group mb-3">
+    <label for="">Place Search</label>
+    <input  #searchInput label="Place Search" type="text" class="form-control">
+</div>
+<google-map (mapClick)="addMarker($event)" (mapReady)="onMapReady($event)" [center]="center" [zoom]="zoom" [options]="options" class="w-100">
+    @for(marker of markers; track marker.id) {
+        <map-marker
+            [position]="marker.position"
+            [title]="marker.title ? marker.title : 'title'">
+        </map-marker>
+    }
+</google-map>

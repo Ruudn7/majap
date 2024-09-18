@@ -31,7 +31,7 @@ export class ProfileFormFieldsComponent implements OnDestroy {
     private fb: NonNullableFormBuilder
   ) {}
 
-  isAddresVisible = new FormControl(false);
+  isAddresVisible = new FormControl(true);
   isAdditonalsVisible = new FormControl(false);
 
   user: IUser = C_EMPTY_USER;
