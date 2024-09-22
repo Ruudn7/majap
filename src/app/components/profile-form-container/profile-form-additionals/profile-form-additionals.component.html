@@ -6,11 +6,7 @@
         <app-input-validator controlName="description"></app-input-validator>
     </div>
 
-    <div class="form-group">
-        <label for="">Hobbys</label>
-        <app-majapp-input formControlName="hobbys"></app-majapp-input>
-        <app-input-validator controlName="hobbys"></app-input-validator>
-    </div>
+    <app-additionals-hobbys [hobbys]="hobbys"></app-additionals-hobbys>
 
     <div class="form-group">
         <label for="">Shotr Infos</label>

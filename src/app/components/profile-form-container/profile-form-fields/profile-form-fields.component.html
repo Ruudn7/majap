@@ -33,6 +33,8 @@
         <app-form-section sectionHeader="Additional info">
             <app-profile-form-additionals [additionalsForm]="userAdditional"></app-profile-form-additionals>
         </app-form-section>
+
+        {{userAdditional.value | json}}
     }
 
     <button class="btn btn-success" [disabled]="userForm.invalid">Send</button>

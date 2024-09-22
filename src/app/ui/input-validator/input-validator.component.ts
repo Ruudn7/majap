@@ -18,12 +18,16 @@ constructor (
   ngOnInit(): void {
     if (this.controlName) {
       this.control = signal(this.formGroup.form.get(this.controlName) as FormControl<any>);
+    } else if(this.singleControl) {
+      this.control = signal(this.singleControl);
     }
   }
 
   @Input() controlName!: string;
-  control!: Signal<FormControl>;
+  @Input() singleControl!: FormControl<any>;
   
+  control!: Signal<FormControl>;
+
   get controlInstance() {
     return this.control();
   }

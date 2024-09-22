@@ -1,0 +1,7 @@
+<div class="d-flex mt-1 f-wrap">
+    @for(item of sampleChips(); track item) {
+        <app-chips [label]="item" />
+     }
+     
+     {{sampleChips().length}}/{{maxAmount}}
+</div>

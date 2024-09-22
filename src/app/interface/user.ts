@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, FormGroup } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl, FormGroup } from "@angular/forms";
 
 export interface IUser {
     basicInfo: IUserBasicInfo;
@@ -60,7 +60,7 @@ export interface IUserAdditionalInfo {
 
 export interface IUserAdditionalForm {
     description?: FormControl<string>;
-    hobbys?: FormControl<string[]>;
+    hobbys?: FormArray<FormControl<string>>;
     shotrInfos?: AbstractControl<IUserAdditionalShorts[]>;
 }
 

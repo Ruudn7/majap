@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
 import { IUser, IUserAdditionalForm, IUserAdditionalShorts, IUserAddressForm, IUserBasicForm, IUserContactForm, IUserForm } from '@app/interface/user';
 import { FormSectionComponent } from '@app/ui/form-section/form-section.component';
 import { map, tap } from 'rxjs';
@@ -31,8 +31,8 @@ export class ProfileFormFieldsComponent implements OnDestroy {
     private fb: NonNullableFormBuilder
   ) {}
 
-  isAddresVisible = new FormControl(true);
-  isAdditonalsVisible = new FormControl(false);
+  isAddresVisible = new FormControl(false);
+  isAdditonalsVisible = new FormControl(true);
 
   user: IUser = C_EMPTY_USER;
 
@@ -143,8 +143,8 @@ export class ProfileFormFieldsComponent implements OnDestroy {
         nonNullable: true,
         validators: [Validators.required, Validators.minLength(15)],
       }),
-      hobbys: new FormControl<string[]>([], {
-        nonNullable: true,
+      hobbys: new FormArray<FormControl<string>>([], {
+        // nonNullable: true,
         validators: [],
       }),
       shotrInfos: new FormControl<IUserAdditionalShorts[]>([], {
