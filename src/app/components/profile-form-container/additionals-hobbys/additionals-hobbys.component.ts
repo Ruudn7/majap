@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { FormArrayService } from '@app/services/form-array.service';
 import { ChipsListComponent } from '@app/shared/chips-list/chips-list.component';
 import { InputValidatorComponent } from '@app/ui/input-validator/input-validator.component';
 import { MajappInputComponent } from '@app/ui/majapp-input/majapp-input.component';
@@ -15,8 +16,13 @@ export class AdditionalsHobbysComponent {
 
   @ViewChild('hobbyInput', {read: MajappInputComponent}) hobbyInput!: MajappInputComponent;
 
-  hobbyControl = new FormControl<string>('', { validators: [Validators.required, Validators.minLength(3)]})
+  hobbyControl = this.fArrayServ.returnNewControl('', [Validators.required, Validators.minLength(3)]);
   additionalsForm: any;
+  editMode = false;
+
+  constructor(
+    private fArrayServ: FormArrayService
+  ) {}
 
   @Input() hobbys!: FormArray<FormControl<string>>;
 
@@ -27,10 +33,25 @@ export class AdditionalsHobbysComponent {
       }
 
       if (this.hobbys.length < 10) {
-        this.hobbys.push(new FormControl(value, { nonNullable: true }));
+        this.fArrayServ.pushControl(this.hobbys, value, [Validators.required, Validators.minLength(3)]);
         this.hobbyControl.reset();
       }
     }
+  }
+
+  finishEdit(): void {
+    this.editMode = false;
+    this.hobbyControl = this.fArrayServ.returnNewControl('', [Validators.required, Validators.minLength(3)]);
+  }
+
+  editCancel(): void {
+    this.hobbyControl.reset();
+    this.finishEdit();
+  }
+
+  getControlFromList(label: string): void {
+    this.hobbyControl = this.fArrayServ.findControl(this.hobbys, label);
+    this.editMode = true;
   }
 
 }

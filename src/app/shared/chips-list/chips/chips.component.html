@@ -1,1 +1,6 @@
-<div class="d-flex me-2 chips ps-2 mb-2">{{label}} <span class="my-auto mx-1 close-button" (click)="close()">&times;</span> </div>
+<div class="d-flex me-2 chips ps-2 my-2">
+    {{label}}
+    <i class="bi bi-pencil" (click)="edit()"></i>
+    <span class="my-auto mx-1 close-button" (click)="close()">&times;</span>
+</div>
+

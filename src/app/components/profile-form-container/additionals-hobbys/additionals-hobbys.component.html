@@ -2,9 +2,14 @@
     <label for="">Hobbys</label>
     <div class="d-flex">
         <app-majapp-input [formControl]="hobbyControl" class="w-100" #hobbyInput></app-majapp-input>
-        <button class="btn btn-success ms-2" [disabled]="hobbyControl.invalid" (click)="addHobby(hobbyControl.value)" type="button">add</button>
+        @if(!editMode) {
+            <button class="btn btn-success ms-2" [disabled]="hobbyControl.invalid" (click)="addHobby(hobbyControl.value)" type="button">add</button>
+        } @else {
+            <button class="btn btn-info ms-2" [disabled]="hobbyControl.invalid" (click)="finishEdit()" type="button">edit</button>
+            <button class="btn btn-warning ms-2" [disabled]="hobbyControl.invalid" (click)="editCancel()" type="button">cancel</button>
+        }
     </div>
     <app-input-validator [singleControl]="hobbyControl"></app-input-validator>
 </div>
 
-<app-chips-list [arrayList]="hobbys"></app-chips-list>
+<app-chips-list [arrayList]="hobbys" (pickedControl)="getControlFromList($event)"></app-chips-list>
