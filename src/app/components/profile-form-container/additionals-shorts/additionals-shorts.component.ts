@@ -26,22 +26,26 @@ export class AdditionalsShortsComponent implements OnInit {
     private fArrayServ: FormArrayService
   ) {}
 
+  @Input() shorts!: FormArray<FormControl<IUserAdditionalShorts>>;
+
   editMode = false;
   editedControl!: FormControl<IUserAdditionalShorts>;
   shortInfoControl: FormGroup<IUserAdditionalShortsForm> = new FormGroup(this.returnShortForm());
   showAddShort = true;
-  shotrsSingal: WritableSignal<IUserAdditionalShorts[]> = signal([]);
-
-  @Input() shorts!: FormArray<FormControl<IUserAdditionalShorts>>;
+  shortsSingal: WritableSignal<IUserAdditionalShorts[]> = signal([]);
 
   ngOnInit(): void {
     this.showAddShort = !(this.shorts && this.shorts.length > 1);
+
+    if(this.shorts?.value.length) {
+      this.shortsSingal.set(this.shorts.value)
+    }
   }
 
   saveShort(): void {
     const newShort = this.shortInfoControl.value as IUserAdditionalShorts;
     if (newShort) {
-      this.shotrsSingal.set([...this.shotrsSingal(), newShort]);
+      this.shortsSingal.set([...this.shortsSingal(), newShort]);
       this.fArrayServ.pushControl(this.shorts, newShort);
       this.shortInfoControl.reset();
     }
@@ -55,7 +59,7 @@ export class AdditionalsShortsComponent implements OnInit {
 
   editSave(): void {
     this.editedControl.patchValue(this.shortInfoControl.getRawValue());
-    this.shotrsSingal.set(this.shorts.value);
+    this.shortsSingal.set(this.shorts.value);
     this.editEnd();
   }
 
@@ -66,7 +70,7 @@ export class AdditionalsShortsComponent implements OnInit {
 
   deletePost(i: number) {
     this.shorts.removeAt(i);
-    this.shotrsSingal.set(this.shorts.getRawValue());
+    this.shortsSingal.set(this.shorts.getRawValue());
   }
 
   saveEditedPost(index: number): void {

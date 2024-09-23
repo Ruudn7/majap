@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { FormArrayService } from '@app/services/form-array.service';
@@ -8,7 +9,7 @@ import { MajappInputComponent } from '@app/ui/majapp-input/majapp-input.componen
 @Component({
   selector: 'app-additionals-hobbys',
   standalone: true,
-  imports: [MajappInputComponent, ReactiveFormsModule, InputValidatorComponent, ChipsListComponent],
+  imports: [MajappInputComponent, ReactiveFormsModule, InputValidatorComponent, ChipsListComponent, CommonModule],
   templateUrl: './additionals-hobbys.component.html',
   styleUrl: './additionals-hobbys.component.scss'
 })

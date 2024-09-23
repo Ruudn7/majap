@@ -20,8 +20,46 @@ export const C_EMPTY_USER: IUser = {
     additionals: {
         description: '',
         hobbys: [],
-        shotrInfos: []
+        shortInfos: []
     }
+}
+
+export const C_SAMPLE_USER: IUser = {
+    basicInfo: {
+        name: "qwe",
+        birthday: "2024-09-13",
+        lastname: "asd",
+        gender: "male"
+    },
+    contact: {
+        email: "qdsa@asd",
+        phone: ""
+    },
+    address: {
+        city: "Bielsko-Biała",
+        country: "Polska",
+        street: "Michała Grażyńskiego 37",
+        postalCode: "43-300"
+    },
+    additionals: {
+        description: "qweasdzxcasdqwasd",
+        hobbys: [
+            "hobby1",
+            "hobby2"
+        ],
+        shortInfos: [
+            {
+                title: "Is Visible?",
+                answer: "Yes",
+                visible: true
+            },
+            {
+                title: "Is Visible",
+                answer: "No!",
+                visible: false
+            }
+        ]
+    } 
 }
 
 export const SHORT_INFO: IUserAdditionalShorts = {

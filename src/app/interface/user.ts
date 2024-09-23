@@ -55,13 +55,13 @@ export interface IUserAddressForm {
 export interface IUserAdditionalInfo {
     description?: string;
     hobbys?: string[];
-    shotrInfos?: IUserAdditionalShorts[];
+    shortInfos?: IUserAdditionalShorts[];
 }
 
 export interface IUserAdditionalForm {
     description?: FormControl<string>;
     hobbys?: FormArray<FormControl<string>>;
-    shotrInfos?: FormArray<FormControl<IUserAdditionalShorts>>;
+    shortInfos?: FormArray<FormControl<IUserAdditionalShorts>>;
 }
 
 export interface IUserAdditionalShorts {

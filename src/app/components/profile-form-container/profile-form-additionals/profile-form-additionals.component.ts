@@ -23,6 +23,6 @@ export class ProfileFormAdditionalsComponent {
   }
 
   get shorts(): FormArray<FormControl<IUserAdditionalShorts>> {
-    return this.additionalsForm.get('shotrInfos') as FormArray<FormControl<IUserAdditionalShorts>>;
+    return this.additionalsForm.get('shortInfos') as FormArray<FormControl<IUserAdditionalShorts>>;
   }
 }

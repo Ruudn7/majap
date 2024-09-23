@@ -53,36 +53,31 @@ export class ChipsListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.closeListener();
-    this.getControlToEdit();
+    this.subscribeToChips();
+  
+    // Subskrybuj przyszłe zmiany w QueryList
+    this.chips.changes.subscribe(() => {
+      this.subscribeToChips();
+    });
   }
+  
+  private subscribeToChips(): void {
+    const chipsArray = this.chips.toArray();
 
-  closeListener(): void {
-    this.closeSubscription = this.chips.changes
-      .pipe(
-        switchMap((chips: QueryList<ChipsComponent>) => {
-          return from(chips.toArray()).pipe(
-            mergeMap((el: ChipsComponent) => el.closeChips)
-          );
-        })
-      )
-      .subscribe((label: string) => {
-        this.fArrayServ.removeControl(this.arrayList, label);
-      });
-  }
-
-  getControlToEdit(): void {
-    this.editSubscription = this.chips.changes
-      .pipe(
-        switchMap((chips: QueryList<ChipsComponent>) => {
-          return from(chips.toArray()).pipe(
-            mergeMap((el: ChipsComponent) => el.editChips)
-          );
-        })
-      )
-      .subscribe((label: string) => {
-        this.pickedControl.emit(label);
-      });
+    if (chipsArray.length) {
+      // Dla każdego elementu w QueryList subskrybuj jego zdarzenia
+      this.closeSubscription = from(chipsArray)
+        .pipe(mergeMap((el: ChipsComponent) => el.closeChips))
+        .subscribe((label: string) => {
+          this.fArrayServ.removeControl(this.arrayList, label);
+        });
+  
+      this.editSubscription = from(chipsArray)
+        .pipe(mergeMap((el: ChipsComponent) => el.editChips))
+        .subscribe((label: string) => {
+          this.pickedControl.emit(label);
+        });
+    }
   }
 
   ngOnDestroy(): void {

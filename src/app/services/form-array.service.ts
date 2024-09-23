@@ -9,7 +9,7 @@ export class FormArrayService {
   constructor() { }
 
   pushControl<T>(control: FormArray, value: T,  validators: ValidatorFn[] = [], nonNullable: boolean = true): void {
-    control.push(new FormControl(value, { nonNullable: nonNullable, validators }));
+    control.push(new FormControl(value, { nonNullable, validators }));
   }
 
   findControl<T>(control: FormArray<FormControl<T>>, value: T): FormControl<T> {
