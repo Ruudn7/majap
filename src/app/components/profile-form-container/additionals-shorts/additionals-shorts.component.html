@@ -1,0 +1,42 @@
+<div class="short-container p-3">
+
+    @for(short of shotrsSingal(); track short.title ) {
+        <app-short-display
+            [short]="short"
+            [index]="$index"
+            (editPostEmitter)="editPost($index)"
+            (deletePostEmitter)="deletePost($index)"
+        ></app-short-display>
+    }
+
+    <form [formGroup]="shortInfoControl">
+        <div class="form-group">
+            <label for="">Title</label>
+            <app-majapp-input formControlName="title"></app-majapp-input>
+            <app-input-validator controlName="title"></app-input-validator>
+        </div>
+        <div class="form-group">
+            <label for="">Answer</label>
+            <textarea class="form-control" formControlName="answer"></textarea>
+            <app-input-validator controlName="answer"></app-input-validator>
+        </div>
+        <div class="d-flex w-100">
+            
+            <div class="form-check ms-auto my-auto">
+                <input class="form-check-input" type="checkbox" formControlName="visible" id="shortVisible">
+                <label class="form-check-label" for="shortVisible">
+                    Visible
+                </label>
+            </div>
+            @if(editMode) {
+                <button class="btn btn-info ms-2 mt-2" [disabled]="shortInfoControl.invalid" (click)="editSave()" type="button">Edit</button>
+                <button class="btn btn-warning ms-2 mt-2" [disabled]="shortInfoControl.invalid" (click)="editEnd()" type="button">Candel</button>
+            } @else {
+                <button class="btn btn-success ms-2 mt-2" [disabled]="shortInfoControl.invalid" (click)="saveShort()" type="button">add</button>
+            }
+        </div>
+    
+    </form>
+
+</div>
+

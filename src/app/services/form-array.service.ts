@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormControl, ValidatorFn, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormControlOptions, ValidatorFn, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,9 @@ export class FormArrayService {
     return control.controls.find(el => el.value === value) as FormControl<T>;
   }
 
-  returnNewControl<T>( value: T, validators: ValidatorFn[] = [],  nonNullable: boolean = true ): FormControl<T> {
-    return new FormControl<T>(value, { nonNullable, validators }) as FormControl<T>;
+  returnNewControl<T>( value: T, validators: ValidatorFn[] = [],  options: FormControlOptions = {}, nonNullable = true): FormControl<T> {
+    const finalOptions = { ...options, validators, nonNullable };
+    return new FormControl<T>(value, finalOptions) as FormControl<T>;
   }
 
   removeControl(control: FormArray, value: string): void {

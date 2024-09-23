@@ -61,11 +61,17 @@ export interface IUserAdditionalInfo {
 export interface IUserAdditionalForm {
     description?: FormControl<string>;
     hobbys?: FormArray<FormControl<string>>;
-    shotrInfos?: AbstractControl<IUserAdditionalShorts[]>;
+    shotrInfos?: FormArray<FormControl<IUserAdditionalShorts>>;
 }
 
 export interface IUserAdditionalShorts {
     title: string;
     answer: string;
     visible: boolean;
+}
+
+export interface IUserAdditionalShortsForm {
+    title: FormControl<string>;
+    answer: FormControl<string>;
+    visible: FormControl<boolean>;
 }

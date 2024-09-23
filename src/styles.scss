@@ -15,7 +15,11 @@ label {
     font-size: 12px;
 }
 
-form .ng-invalid.ng-touched input, form .ng-invalid.ng-dirty input {
+form app-majapp-input.ng-invalid.ng-touched input,
+form app-majapp-input.ng-invalid.ng-dirty input,
+form textarea.ng-invalid.ng-touched,
+form textarea.ng-invalid.ng-dirty
+ {
     border: 2px solid red !important;
 }
 

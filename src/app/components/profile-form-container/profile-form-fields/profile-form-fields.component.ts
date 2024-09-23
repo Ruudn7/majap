@@ -144,11 +144,9 @@ export class ProfileFormFieldsComponent implements OnDestroy {
         validators: [Validators.required, Validators.minLength(15)],
       }),
       hobbys: new FormArray<FormControl<string>>([], {
-        // nonNullable: true,
         validators: [],
       }),
-      shotrInfos: new FormControl<IUserAdditionalShorts[]>([], {
-        nonNullable: true,
+      shotrInfos: new FormArray<FormControl<IUserAdditionalShorts>>([], {
         validators: [],
       })
     })

@@ -1,4 +1,4 @@
-import { IUser } from "@app/interface/user";
+import { IUser, IUserAdditionalShorts } from "@app/interface/user";
 
 export const C_EMPTY_USER: IUser = {
     basicInfo: {
@@ -22,4 +22,10 @@ export const C_EMPTY_USER: IUser = {
         hobbys: [],
         shotrInfos: []
     }
+}
+
+export const SHORT_INFO: IUserAdditionalShorts = {
+    title: '',
+    answer: '',
+    visible: true
 }
