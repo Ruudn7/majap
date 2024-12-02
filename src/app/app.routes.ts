@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { Routes, CanActivateFn } from '@angular/router';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
     {
@@ -8,5 +9,10 @@ export const routes: Routes = [
     {
         path: 'profile',
         loadComponent: () => import('./components/profile-form-container/profile-form-container.component').then(m => m.ProfileFormContainerComponent)
+    },
+    {
+        path: 'blog',
+        loadComponent: () => import('./components/blog-page/blog-page.component').then(m => m.BlogPageComponent),
+        canActivate: [authGuard]
     }
 ];

@@ -28,7 +28,7 @@ export const C_SAMPLE_USER: IUser = {
     basicInfo: {
         name: "qwe",
         birthday: "2024-09-13",
-        lastname: "asd",
+        lastname: "",
         gender: "male"
     },
     contact: {

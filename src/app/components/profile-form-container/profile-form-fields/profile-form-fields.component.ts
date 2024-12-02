@@ -10,6 +10,7 @@ import { ProfileFormAddressComponent } from '../profile-form-address/profile-for
 import { ProfileFormBasicComponent } from '../profile-form-basic/profile-form-basic.component';
 import { ProfileFormContactComponent } from '../profile-form-contact/profile-form-contact.component';
 import { FormArrayService } from '@app/services/form-array.service';
+import { UserService } from '@app/services/user/user.service';
 
 @Component({
   selector: 'app-profile-form-fields',
@@ -30,7 +31,8 @@ export class ProfileFormFieldsComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: NonNullableFormBuilder,
-    private fArrayServ: FormArrayService
+    private fArrayServ: FormArrayService,
+    private userServ: UserService
   ) {}
 
   isAddresVisible = new FormControl(false);
@@ -89,6 +91,11 @@ export class ProfileFormFieldsComponent implements OnInit, OnDestroy {
 
   save(): void {
     this.user = this.userForm.getRawValue();
+    this.userServ.saveUser(this.user).subscribe(
+      (res: any) => {
+        console.log(res)
+      }
+    )
   }
 
   private fillFormArray(values: any[], formArrayName: string) {

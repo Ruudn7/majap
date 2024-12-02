@@ -14,7 +14,9 @@ export class AuthService {
   })
 
   login(loginFormValue: LoginUser) {
-    console.log(loginFormValue)
+    console.log(loginFormValue, 'ustawiam email')
+    this.user.set({email: loginFormValue.username});
+    console.log(this.user(), 'emial set')
   }
 
   setUser(email: string): void {

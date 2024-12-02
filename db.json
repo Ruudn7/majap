@@ -1,0 +1,54 @@
+{
+  "blog": [
+    {
+      "id": 1,
+      "title": "Post 1",
+      "content": "Zawartość pierwszego posta"
+    },
+    {
+      "id": 2,
+      "title": "Post 2",
+      "content": "Zawartość drugiego posta"
+    }
+  ],
+  "user": [
+    {
+      "id": "c94b",
+      "basicInfo": {
+        "name": "qwe",
+        "birthday": "2024-09-13",
+        "lastname": "qweSample",
+        "gender": "male"
+      },
+      "contact": {
+        "email": "qdsa@asd",
+        "phone": ""
+      },
+      "address": {
+        "city": "Bielsko-Biała",
+        "country": "Polska",
+        "street": "Michała Grażyńskiego 37",
+        "postalCode": "43-300"
+      },
+      "additionals": {
+        "description": "qweasdzxcasdqwasd",
+        "hobbys": [
+          "hobby1",
+          "hobby2"
+        ],
+        "shortInfos": [
+          {
+            "title": "Is Visible?",
+            "answer": "Yes",
+            "visible": true
+          },
+          {
+            "title": "Is Visible",
+            "answer": "No!",
+            "visible": false
+          }
+        ]
+      }
+    }
+  ]
+}
